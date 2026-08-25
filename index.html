@@ -39,7 +39,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Caveat+Brush&amp;family=Nunito:wght@400;700;900&amp;display=swap" rel="stylesheet">
-<script src="./image-slot.js"></script>
 <style>
   body { margin: 0; background: #F3E7CE; }
   a { color: #E5116A; }
@@ -91,8 +90,8 @@
 
     <article style="background:#FFFDF3;border:3px solid #3B1A6B;border-radius:20px;overflow:hidden;margin-bottom:20px;box-shadow:5px 6px 0 #3B1A6B">
       <div style="position:relative;width:100%;aspect-ratio:9/13;background:#EFE3C8;overflow:hidden">
-        <image-slot id="pv26-banda-1" shape="rect" placeholder="Foto de Grupo Cali"></image-slot>
-        <video src="{{ v1src }}" ref="{{ r1 }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Video de Grupo Cali" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+        <img src="./posters/grupocali.png" alt="Grupo Cali en vivo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05)" />
+        <video src="{{ v1src }}" ref="{{ r1 }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" poster="./posters/grupocali.png" aria-label="Video de Grupo Cali" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
         <button type="button" onClick="{{ s1 }}" aria-label="Activar o silenciar el sonido" style="position:absolute;bottom:10px;right:10px;z-index:3;width:42px;height:42px;border:0;border-radius:50%;background:rgba(30,58,30,.72);color:#FFF8E7;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center" style-hover="background:#1E3A1E">{{ i1 }}</button>
         <div style="position:absolute;top:10px;left:10px;background:#7B3FBF;color:#FFF8E7;font-family:Anton,sans-serif;font-size:15px;padding:5px 11px;border-radius:999px;pointer-events:none;z-index:2">01</div>
       </div>
@@ -103,8 +102,8 @@
 
     <article style="background:#FFFDF3;border:3px solid #3B1A6B;border-radius:20px;overflow:hidden;margin-bottom:20px;box-shadow:5px 6px 0 #3B1A6B">
       <div style="position:relative;width:100%;aspect-ratio:9/13;background:#EFE3C8;overflow:hidden">
-        <image-slot id="pv26-banda-2" shape="rect" placeholder="Foto de El Brujo Ezequiel"></image-slot>
-        <video src="{{ v2src }}" ref="{{ r2 }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Video de El Brujo Ezequiel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+        <img src="./posters/brujo.png" alt="El Brujo Ezequiel en vivo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05)" />
+        <video src="{{ v2src }}" ref="{{ r2 }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" poster="./posters/brujo.png" aria-label="Video de El Brujo Ezequiel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
         <button type="button" onClick="{{ s2 }}" aria-label="Activar o silenciar el sonido" style="position:absolute;bottom:10px;right:10px;z-index:3;width:42px;height:42px;border:0;border-radius:50%;background:rgba(30,58,30,.72);color:#FFF8E7;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center" style-hover="background:#1E3A1E">{{ i2 }}</button>
         <div style="position:absolute;top:10px;left:10px;background:#E5116A;color:#FFF8E7;font-family:Anton,sans-serif;font-size:15px;padding:5px 11px;border-radius:999px;pointer-events:none;z-index:2">02</div>
       </div>
@@ -115,8 +114,8 @@
 
     <article style="background:#FFFDF3;border:3px solid #3B1A6B;border-radius:20px;overflow:hidden;margin-bottom:20px;box-shadow:5px 6px 0 #3B1A6B">
       <div style="position:relative;width:100%;aspect-ratio:9/13;background:#EFE3C8;overflow:hidden">
-        <image-slot id="pv26-banda-3" shape="rect" placeholder="Foto de Marcos Castello Kaniche"></image-slot>
-        <video src="{{ v3src }}" ref="{{ r3 }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Video de Marcos Castello Kaniche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+        <img src="./posters/marcos.png" alt="Marcos Castello Kaniche en vivo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05)" />
+        <video src="{{ v3src }}" ref="{{ r3 }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" poster="./posters/marcos.png" aria-label="Video de Marcos Castello Kaniche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
         <button type="button" onClick="{{ s3 }}" aria-label="Activar o silenciar el sonido" style="position:absolute;bottom:10px;right:10px;z-index:3;width:42px;height:42px;border:0;border-radius:50%;background:rgba(30,58,30,.72);color:#FFF8E7;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center" style-hover="background:#1E3A1E">{{ i3 }}</button>
         <div style="position:absolute;top:10px;left:10px;background:#0E8C7F;color:#FFF8E7;font-family:Anton,sans-serif;font-size:15px;padding:5px 11px;border-radius:999px;pointer-events:none;z-index:2">03</div>
       </div>
@@ -127,8 +126,8 @@
 
     <article style="background:#FFFDF3;border:3px solid #3B1A6B;border-radius:20px;overflow:hidden;margin-bottom:20px;box-shadow:5px 6px 0 #3B1A6B">
       <div style="position:relative;width:100%;aspect-ratio:9/13;background:#EFE3C8;overflow:hidden">
-        <image-slot id="pv26-banda-4" shape="rect" placeholder="Foto de Freddy y los Solares"></image-slot>
-        <video src="{{ v4src }}" ref="{{ r4 }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Video de Freddy y los Solares" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+        <img src="./posters/freddy.png" alt="Freddy y los Solares en vivo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05)" />
+        <video src="{{ v4src }}" ref="{{ r4 }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" poster="./posters/freddy.png" aria-label="Video de Freddy y los Solares" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
         <button type="button" onClick="{{ s4 }}" aria-label="Activar o silenciar el sonido" style="position:absolute;bottom:10px;right:10px;z-index:3;width:42px;height:42px;border:0;border-radius:50%;background:rgba(30,58,30,.72);color:#FFF8E7;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center" style-hover="background:#1E3A1E">{{ i4 }}</button>
         <div style="position:absolute;top:10px;left:10px;background:#F07316;color:#FFF8E7;font-family:Anton,sans-serif;font-size:15px;padding:5px 11px;border-radius:999px;pointer-events:none;z-index:2">04</div>
       </div>
@@ -189,13 +188,34 @@ class Component extends DCLogic {
   vids = { 1: React.createRef(), 2: React.createRef(), 3: React.createRef(), 4: React.createRef() };
 
   componentDidMount() {
+    const play = v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    if (!("IntersectionObserver" in window)) {
+      [1, 2, 3, 4].forEach(k => { const v = this.vids[k].current; if (v) { v.muted = true; v.preload = "metadata"; play(v); } });
+      return;
+    }
+    // Solo el video visible descarga y se reproduce; el resto queda en pausa.
+    this.io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const v = e.target;
+        if (e.isIntersecting) {
+          if (v.preload === "none") v.preload = "auto";
+          play(v);
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    }, { rootMargin: "150px 0px", threshold: 0.35 });
+
     [1, 2, 3, 4].forEach(k => {
       const v = this.vids[k].current;
       if (!v) return;
       v.muted = true;
-      const p = v.play();
-      if (p && p.catch) p.catch(() => {});
+      this.io.observe(v);
     });
+  }
+
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
   }
 
   toggleSound(i) {
