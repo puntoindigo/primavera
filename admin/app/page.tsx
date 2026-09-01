@@ -3,6 +3,7 @@ import { getPiSession, isAdmin, buildLogoutUrl } from "@/lib/pi-session";
 import { getDb } from "@/db";
 import { tickets } from "@/db/schema";
 import { desc } from "drizzle-orm";
+import UserMenu from "@/components/UserMenu";
 
 const ADMIN_URL = process.env.NEXT_PUBLIC_ADMIN_URL ?? "https://primavera-admin.puntoindigo.com";
 
@@ -22,11 +23,14 @@ export default async function DashboardPage() {
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
         <div>
           <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Gran Fiesta de la Primavera 2026</h1>
-          <p style={{ color: "var(--muted)", fontSize: "0.875rem" }}>Hola, {session.name ?? session.email}</p>
+          <p style={{ color: "var(--muted)", fontSize: "0.875rem" }}>Panel de administración</p>
         </div>
-        <a href={buildLogoutUrl(ADMIN_URL)} style={{ fontSize: "0.875rem", color: "var(--muted)" }}>
-          Cerrar sesión
-        </a>
+        <UserMenu
+          name={session.name ?? null}
+          email={session.email}
+          picture={session.picture ?? null}
+          logoutUrl={buildLogoutUrl(ADMIN_URL)}
+        />
       </header>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", marginBottom: "2rem" }}>
