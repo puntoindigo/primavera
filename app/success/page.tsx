@@ -80,7 +80,10 @@ function ErrorMessage({ message }: { message: string }) {
       <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: "2.5rem", maxWidth: 400, width: "100%", textAlign: "center" }}>
         <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>⚠️</div>
         <h1 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "1rem" }}>Atención</h1>
-        <p style={{ color: "var(--muted)", fontSize: "0.875rem" }}>{message}</p>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginBottom: "1.5rem" }}>{message}</p>
+        <a href="/" style={{ display: "inline-block", background: "var(--accent)", color: "#fff", textDecoration: "none", borderRadius: 8, padding: "0.65rem 1.75rem", fontWeight: 600, fontSize: "0.9rem" }}>
+          Volver al inicio
+        </a>
       </div>
     </div>
   );
