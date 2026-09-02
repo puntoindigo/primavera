@@ -13,5 +13,9 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*", "/check/:path*"],
+  matcher: [
+    "/admin",
+    "/admin/((?!login|unauthorized).*)",
+    "/check/:path*",
+  ],
 };
