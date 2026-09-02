@@ -1,0 +1,31 @@
+{
+  "name": "primavera2026",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3013",
+    "build": "next build",
+    "start": "next start",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.38.0",
+    "mercadopago": "^2.0.15",
+    "next": "15.2.6",
+    "postgres": "^3.4.8",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.5.4",
+    "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.28.0",
+    "typescript": "^5"
+  }
+}
