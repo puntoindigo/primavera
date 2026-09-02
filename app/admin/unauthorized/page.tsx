@@ -1,10 +1,12 @@
 import { buildLogoutUrl } from "@/lib/auth-shared";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://primavera2026.puntoindigo.com";
+const ACCOUNTS_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL ?? "https://accounts.puntoindigo.com";
 
 export default function UnauthorizedPage() {
-  // Logout limpia la cookie, next va al login de primavera con reauth=1
-  const switchUrl = buildLogoutUrl(SITE_URL + "/admin/login?reauth=1");
+  // Logout limpia la cookie, después va directo al OAuth de Google con prompt=select_account
+  const signinGoogleUrl = `${ACCOUNTS_URL}/api/auth/signin-google?next=${encodeURIComponent(SITE_URL + "/admin")}&reauth=1`;
+  const switchUrl = buildLogoutUrl(signinGoogleUrl);
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
