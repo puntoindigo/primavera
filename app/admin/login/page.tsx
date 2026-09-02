@@ -1,6 +1,7 @@
 import { buildLoginUrl } from "@/lib/auth-shared";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://primavera2026.puntoindigo.com";
+const ACCOUNTS_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL ?? "https://accounts.puntoindigo.com";
 
 interface Props {
   searchParams: Promise<{ redirect?: string; reauth?: string }>;
@@ -9,7 +10,10 @@ interface Props {
 export default async function LoginPage({ searchParams }: Props) {
   const { redirect: redirectTo, reauth } = await searchParams;
   const destination = redirectTo ?? (SITE_URL + "/admin");
-  const loginUrl = buildLoginUrl(destination, { reauth: !!reauth });
+  // Con reauth=1 ir directo al OAuth de Google sin pasar por la página de login de accounts
+  const loginUrl = reauth
+    ? `${ACCOUNTS_URL}/api/auth/signin-google?next=${encodeURIComponent(destination)}&reauth=1`
+    : buildLoginUrl(destination);
 
   return (
     <div style={{
