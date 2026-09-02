@@ -1,12 +1,10 @@
-import { buildLogoutUrl, buildLoginUrl } from "@/lib/auth-shared";
+import { buildLogoutUrl } from "@/lib/auth-shared";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://primavera2026.puntoindigo.com";
 
 export default function UnauthorizedPage() {
-  // Logout primero para limpiar la cookie, luego login forzando reauth
-  const switchUrl = buildLogoutUrl(
-    buildLoginUrl(SITE_URL + "/admin", { reauth: true })
-  );
+  // Logout limpia la cookie, next va al login de primavera con reauth=1
+  const switchUrl = buildLogoutUrl(SITE_URL + "/admin/login?reauth=1");
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>

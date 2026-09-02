@@ -3,13 +3,13 @@ import { buildLoginUrl } from "@/lib/auth-shared";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://primavera2026.puntoindigo.com";
 
 interface Props {
-  searchParams: Promise<{ redirect?: string }>;
+  searchParams: Promise<{ redirect?: string; reauth?: string }>;
 }
 
 export default async function LoginPage({ searchParams }: Props) {
-  const { redirect: redirectTo } = await searchParams;
+  const { redirect: redirectTo, reauth } = await searchParams;
   const destination = redirectTo ?? (SITE_URL + "/admin");
-  const loginUrl = buildLoginUrl(destination);
+  const loginUrl = buildLoginUrl(destination, { reauth: !!reauth });
 
   return (
     <div style={{
