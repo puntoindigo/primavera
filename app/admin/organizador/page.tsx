@@ -1,3 +1,6 @@
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { eq } from "drizzle-orm";
 import { getDb } from "@/db";
 import { organizers, team_members } from "@/db/schema";
 import { getPiSession } from "@/lib/pi-session";
@@ -24,17 +27,23 @@ async function guardarOrganizador(formData: FormData) {
   const db = getDb();
   if (id) {
     await db.update(organizers).set({ name, slug, legal_name, tax_id, email, phone, website, instagram, description, mp_access_token, updated_at: new Date() })
-      .where((await import("drizzle-orm")).eq(organizers.id, id));
+      .where(eq(organizers.id, id));
   } else {
     const [created] = await db.insert(organizers).values({ name, slug, legal_name, tax_id, email, phone, website, instagram, description, mp_access_token }).returning({ id: organizers.id });
-    // Seed: registrar al superadmin como owner
     await db.insert(team_members).values({ organizer_id: created.id, email: session.email.toLowerCase(), name: session.name ?? null, role: "owner" });
   }
+
+  revalidatePath("/admin/organizador");
+  redirect("/admin/organizador?saved=1");
 }
 
-export default async function OrganizadorPage() {
+type PageProps = { searchParams: Promise<{ saved?: string }> };
+
+export default async function OrganizadorPage({ searchParams }: PageProps) {
+  const { saved } = await searchParams;
+  const showSaved = saved === "1";
+
   const db = getDb();
-  // Asumimos que hay uno solo por ahora (Primavera 2026)
   const orgs = await db.select().from(organizers).limit(1);
   const org = orgs[0] ?? null;
 
@@ -44,6 +53,24 @@ export default async function OrganizadorPage() {
       <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
         {org ? "Editá los datos del organizador." : "Todavía no hay un organizador. Completá los datos para crear uno."}
       </p>
+
+      {showSaved && (
+        <div style={{
+          background: "#16a34a22",
+          border: "1px solid #16a34a",
+          borderRadius: 8,
+          padding: "0.75rem 1.25rem",
+          marginBottom: "1.25rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          fontSize: "0.875rem",
+          color: "#16a34a",
+          fontWeight: 600,
+        }}>
+          ✓ Datos del organizador guardados correctamente.
+        </div>
+      )}
 
       <form action={guardarOrganizador} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         {org && <input type="hidden" name="id" value={org.id} />}

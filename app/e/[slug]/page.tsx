@@ -16,6 +16,7 @@ export default async function EventoPublicoPage({ params }: Props) {
       tagline:       events.tagline,
       description:   events.description,
       cover_url:     events.cover_url,
+      image_url:     events.image_url,
       venue_name:    events.venue_name,
       venue_address: events.venue_address,
       venue_city:    events.venue_city,
@@ -90,6 +91,14 @@ export default async function EventoPublicoPage({ params }: Props) {
             )}
           </div>
         </div>
+
+        {/* Imagen principal */}
+        {ev.image_url && (
+          <div style={{ marginBottom: "2rem", borderRadius: 12, overflow: "hidden", border: "1px solid var(--border)" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={ev.image_url} alt={ev.name} style={{ width: "100%", maxHeight: 420, objectFit: "cover", display: "block" }} />
+          </div>
+        )}
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5rem" }}>
           {/* Descripción */}

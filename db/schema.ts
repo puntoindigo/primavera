@@ -75,6 +75,7 @@ export const events = primavera.table(
     tagline:       text("tagline"),
     description:   text("description"),
     cover_url:     text("cover_url"),
+    image_url:     text("image_url"),
     venue_name:    text("venue_name"),
     venue_address: text("venue_address"),
     venue_city:    text("venue_city"),
