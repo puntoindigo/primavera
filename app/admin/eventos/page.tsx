@@ -74,8 +74,9 @@ export default async function EventosPage() {
                     <td style={{ padding: "0.75rem 1rem", fontSize: "0.875rem", color: "var(--muted)" }}>
                       {ev.venue_city ?? "—"}
                     </td>
-                    <td style={{ padding: "0.75rem 1rem" }}>
+                    <td style={{ padding: "0.75rem 1rem", display: "flex", gap: "0.75rem", alignItems: "center" }}>
                       <a href={`/admin/eventos/${ev.id}`} style={{ fontSize: "0.8rem", color: "var(--accent)" }}>Editar →</a>
+                      <a href={`/e/${ev.slug}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.8rem", color: "var(--muted)" }}>Ver pública ↗</a>
                     </td>
                   </tr>
                 );
