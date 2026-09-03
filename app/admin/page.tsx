@@ -1,16 +1,8 @@
-import { redirect } from "next/navigation";
-import { getPiSession, isAdmin, buildLogoutUrl } from "@/lib/pi-session";
 import { getDb } from "@/db";
 import { tickets } from "@/db/schema";
 import { desc } from "drizzle-orm";
-import UserMenu from "@/components/UserMenu";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://primavera2026.puntoindigo.com";
 
 export default async function DashboardPage() {
-  const session = await getPiSession();
-  if (!session || !isAdmin(session.email)) redirect("/admin/unauthorized");
-
   const db = getDb();
   const rows = await db.select().from(tickets).orderBy(desc(tickets.created_at));
 
@@ -19,19 +11,11 @@ export default async function DashboardPage() {
   const used = rows.filter((r) => r.used_at !== null).length;
 
   return (
-    <div style={{ maxWidth: 1000, margin: "0 auto", padding: "2rem 1rem" }}>
-      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-        <div>
-          <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Gran Fiesta de la Primavera 2026</h1>
-          <p style={{ color: "var(--muted)", fontSize: "0.875rem" }}>Panel de administración</p>
-        </div>
-        <UserMenu
-          name={session.name ?? null}
-          email={session.email}
-          picture={session.picture ?? null}
-          logoutUrl={buildLogoutUrl(SITE_URL + "/admin")}
-        />
-      </header>
+    <>
+      <div style={{ marginBottom: "2rem" }}>
+        <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Gran Fiesta de la Primavera 2026</h1>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem" }}>Panel de administración</p>
+      </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", marginBottom: "2rem" }}>
         <StatCard label="Tickets totales" value={total} />
@@ -81,10 +65,7 @@ export default async function DashboardPage() {
                   {t.created_at ? new Date(t.created_at).toLocaleDateString("es-AR") : "—"}
                 </td>
                 <td style={{ padding: "0.75rem 1rem" }}>
-                  <a
-                    href={`/check/${t.qr_token}`}
-                    style={{ fontSize: "0.8rem", color: "var(--accent)" }}
-                  >
+                  <a href={`/check/${t.qr_token}`} style={{ fontSize: "0.8rem", color: "var(--accent)" }}>
                     Ver entrada
                   </a>
                 </td>
@@ -93,7 +74,7 @@ export default async function DashboardPage() {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }
 
