@@ -12,7 +12,7 @@ export default async function LoginPage({ searchParams }: Props) {
   const destination = redirectTo ?? (SITE_URL + "/admin");
   // Con reauth=1 ir directo al OAuth de Google sin pasar por la página de login de accounts
   const loginUrl = reauth
-    ? `${ACCOUNTS_URL}/api/auth/signin-google?next=${encodeURIComponent(destination)}&reauth=1`
+    ? `${ACCOUNTS_URL}/api/auth/google?next=${encodeURIComponent(destination)}&reauth=1`
     : buildLoginUrl(destination);
 
   return (

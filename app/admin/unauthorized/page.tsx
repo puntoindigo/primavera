@@ -5,7 +5,7 @@ const ACCOUNTS_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL ?? "https://accounts.p
 
 export default function UnauthorizedPage() {
   // Logout limpia la cookie, después va directo al OAuth de Google con prompt=select_account
-  const signinGoogleUrl = `${ACCOUNTS_URL}/api/auth/signin-google?next=${encodeURIComponent(SITE_URL + "/admin")}&reauth=1`;
+  const signinGoogleUrl = `${ACCOUNTS_URL}/api/auth/google?next=${encodeURIComponent(SITE_URL + "/admin")}&reauth=1`;
   const switchUrl = buildLogoutUrl(signinGoogleUrl);
 
   return (
